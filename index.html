@@ -13,6 +13,7 @@
       font-family: "Poppins", sans-serif;
       background-color: #000000;
       color: white;
+      overflow-x: hidden; /* Prevents horizontal scrolling issues */
     }
 
     header {
@@ -21,6 +22,7 @@
       align-items: center;
       padding: 15px 40px;
       background-color: rgba(0, 0, 0, 0.8);
+      flex-wrap: wrap; /* Allows wrapping on smaller screens */
     }
 
     header h1 {
@@ -43,14 +45,17 @@
 
     .hero h1 {
       font-family: "Pixelify Sans", sans-serif;
-      font-size: 100px; /* 60*/
+      /* Fluid sizing: minimum 45px, scales with screen width, max 100px */
+      font-size: clamp(45px, 10vw, 100px); 
       margin-bottom: 10px;
       font-weight: normal;
+      line-height: 1.1;
     } 
 
     .hero p {
       font-family: "Pixelify Sans", serif;
-      font-size: 28px;
+      /* Fluid sizing for the subtitle */
+      font-size: clamp(20px, 4vw, 28px);
       margin: 0;
     }
 
@@ -80,6 +85,7 @@
 
     .product img {
       width: 100%;
+      height: auto; /* Ensures images scale properly */
       border-radius: 10px;
       margin-bottom: 10px;
     }
@@ -109,7 +115,7 @@
 
     .request-section h3 {
       font-family: "Pixelify Sans", sans-serif;
-      font-size: 37px;
+      font-size: clamp(28px, 6vw, 37px);
       line-height: 1.6;
     }
 
@@ -137,6 +143,7 @@
       gap: 30px;
       margin-top: 60px;
       font-family: monospace;
+      flex-wrap: wrap; /* Prevents overlap on small screens */
     }
 
     details {
@@ -168,6 +175,35 @@
 
     a {
       color: #b4b4ff;
+    }
+
+    /* --- MOBILE RESPONSIVENESS FIXES --- */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+      }
+      
+      nav a {
+        margin: 0 10px; /* Reduces spacing between links */
+      }
+
+      section {
+        padding: 40px 20px; /* Drops 80px side padding to 20px */
+      }
+
+      details {
+        margin: 20px 20px; /* Drops 80px side margin to 20px */
+      }
+
+      .products {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Fits products nicely side-by-side or stacked */
+      }
+
+      footer {
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
