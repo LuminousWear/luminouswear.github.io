@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luminous Wear | CherryPixels</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Style+Script&family=Pixelify+Sans&display=swap" rel="stylesheet">
-
+  
+  <title>Luminous Wear | CherryPixels</title>
+  
   <style>
     body {
       margin: 0;
@@ -24,8 +24,9 @@
     }
 
     header h1 {
-      font-family: "Style Script", serif;
+      font-family: "Pixelify Sans", serif;
       font-size: 24px;
+      margin: 0;
     }
 
     nav a {
@@ -41,14 +42,16 @@
     }
 
     .hero h1 {
-      font-size: 60px;
+      font-family: "Pixelify Sans", sans-serif;
+      font-size: 100px; /* 60*/
       margin-bottom: 10px;
-      font-weight: bold;
-    }
+      font-weight: normal;
+    } 
 
     .hero p {
-      font-family: "Style Script";
+      font-family: "Pixelify Sans", serif;
       font-size: 28px;
+      margin: 0;
     }
 
     section {
@@ -56,7 +59,7 @@
     }
 
     h2 {
-      font-family: "Pixelify Sans", serif;
+      font-family: "Pixelify Sans", sans-serif;
       border-bottom: 1px solid gray;
       padding-bottom: 10px;
       margin-bottom: 30px;
@@ -70,7 +73,7 @@
     }
 
     .product {
-      background-color: #141414;
+      background-color: #000000;
       padding: 20px;
       border-radius: 12px;
     }
@@ -83,7 +86,7 @@
 
     .button-link {
       display: inline-block;
-      background-color: black;
+      background-color: rgb(0, 0, 0);
       color: white;
       border: 2px solid white;
       padding: 12px 25px;
@@ -137,9 +140,9 @@
     }
 
     details {
-      background-color: #141414;
+      background-color: #000000;
       border-radius: 10px;
-      margin: 20px 0;
+      margin: 20px 80px;
       padding: 20px;
       cursor: pointer;
     }
@@ -157,7 +160,7 @@
     }
 
     footer {
-      background-color: #111;
+      background-color: #000000;
       padding: 30px 50px;
       text-align: center;
       font-size: 14px;
@@ -169,6 +172,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <h1>🍒 Cherrypixels</h1>
     <nav>
@@ -194,9 +198,8 @@
   </details>
 
   <section>
-    <body>
-  <h2>/Products <img src="2025.png" class="myImage"/></h2>
-    </body>
+    <h2>/Products <img src="2025.png" alt="2025" class="myImage" style="float:right; height: 30px;"/></h2>
+  
     <div class="products">
       <div class="product">
         <img src="jacket-white.png" alt="White Jacket">
@@ -222,8 +225,11 @@
   </section>
 
   <section class="request-section">
-    <h3>LET US BRIGHTEN<br>YOUR DAY!</h3>
-    <button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfv1itw8PuGhB4Q-rGkTpWrr2XvvWEo29SAUSViiHU4xuiifQ/viewform'">REQUEST: Custom</button>
+    <div class="brighten-day">
+      <img src="Jacket.gif" alt="Jacket 360" width="120">
+      <h3>LET US BRIGHTEN<br>YOUR DAY!</h3>
+      <button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfv1itw8PuGhB4Q-rGkTpWrr2XvvWEo29SAUSViiHU4xuiifQ/viewform'">REQUEST: Custom</button>
+    </div>
   </section>
 
   <div class="made-with">
@@ -247,7 +253,8 @@
   </section>
 
   <footer>
-    <p><b>Contact:</b> luminouswearcompany@gmail.com</p>
+    <p><b>Contact:</b> <a href="mailto:luminouswearcompany@gmail.com">luminouswearcompany@gmail.com</a></p>
   </footer>
+
 </body>
 </html>
