@@ -8,12 +8,16 @@
   <title>Luminous Wear | CherryPixels</title>
   
   <style>
+    :root {
+      --bg-opacity: 0.9;
+    }
+
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
       background-color: #000000;
       color: white;
-      overflow-x: hidden; /* Prevents horizontal scrolling issues */
+      overflow-x: hidden;
     }
 
     header {
@@ -21,8 +25,11 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
-      background-color: rgba(0, 0, 0, 0.8);
-      flex-wrap: wrap; /* Allows wrapping on smaller screens */
+      background-color: rgba(0, 0, 0, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
     }
 
     header h1 {
@@ -35,28 +42,77 @@
       color: white;
       margin-left: 20px;
       text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
     }
 
+    nav a:hover {
+      color: #b4b4ff;
+    }
+
+  
     .hero {
+      position: relative;
       text-align: center;
-      padding: 100px 20px;
+      padding: 160px 20px;
+      background-color: #000; 
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: url("background.jpg") center/cover no-repeat;
+      opacity: var(--bg-opacity);
+      z-index: 1;
+      /* cool zoom in effect at beggining */
+      animation: zoomPulse 10s infinite alternate ease-in-out; 
+    }
+
+/*    
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+      z-index: 2;
+    } */
+
+    .hero h1, .hero p {
+      position: relative;
+      z-index: 3;
+      margin: 0;
+      text-shadow: 0 0 20px rgba(0,0,0,0.9);
     }
 
     .hero h1 {
       font-family: "Pixelify Sans", sans-serif;
-      /* Fluid sizing: minimum 45px, scales with screen width, max 100px */
       font-size: clamp(45px, 10vw, 100px); 
-      margin-bottom: 10px;
       font-weight: normal;
       line-height: 1.1;
     } 
 
     .hero p {
       font-family: "Pixelify Sans", serif;
-      /* Fluid sizing for the subtitle */
       font-size: clamp(20px, 4vw, 28px);
-      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    @keyframes zoomPulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.1); opacity: 0.9; }
     }
 
     section {
@@ -65,7 +121,7 @@
 
     h2 {
       font-family: "Pixelify Sans", sans-serif;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid #333;
       padding-bottom: 10px;
       margin-bottom: 30px;
     }
@@ -78,21 +134,27 @@
     }
 
     .product {
-      background-color: #000000;
+      background-color: #0a0a0a;
       padding: 20px;
       border-radius: 12px;
+      transition: transform 0.3s ease, border 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
     }
 
     .product img {
       width: 100%;
-      height: auto; /* Ensures images scale properly */
+      height: auto;
       border-radius: 10px;
       margin-bottom: 10px;
     }
 
     .button-link {
       display: inline-block;
-      background-color: rgb(0, 0, 0);
+      background-color: black;
       color: white;
       border: 2px solid white;
       padding: 12px 25px;
@@ -141,13 +203,13 @@
       justify-content: center;
       align-items: center;
       gap: 30px;
-      margin-top: 60px;
+      margin: 60px 0;
       font-family: monospace;
-      flex-wrap: wrap; /* Prevents overlap on small screens */
+      flex-wrap: wrap;
     }
 
     details {
-      background-color: #000000;
+      background-color: #0a0a0a;
       border-radius: 10px;
       margin: 20px 80px;
       padding: 20px;
@@ -157,53 +219,34 @@
     details summary {
       font-weight: bold;
       font-size: 18px;
-      margin-bottom: 10px;
     }
 
     details p {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 15px;
       line-height: 1.6;
+      color: #ccc;
     }
 
     footer {
-      background-color: #000000;
+      background-color: #000;
       padding: 30px 50px;
       text-align: center;
       font-size: 14px;
+      border-top: 1px solid #222;
     }
 
-    a {
-      color: #b4b4ff;
-    }
+    a { color: #b4b4ff; }
 
-    /* --- MOBILE RESPONSIVENESS FIXES --- */
+    ::selection { background: #fff; color: #000; }
+
+    /* MOBILE FIXES */
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 15px 20px;
-        gap: 15px;
-      }
-      
-      nav a {
-        margin: 0 10px; /* Reduces spacing between links */
-      }
-
-      section {
-        padding: 40px 20px; /* Drops 80px side padding to 20px */
-      }
-
-      details {
-        margin: 20px 20px; /* Drops 80px side margin to 20px */
-      }
-
-      .products {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Fits products nicely side-by-side or stacked */
-      }
-
-      footer {
-        padding: 30px 20px;
-      }
+      header { flex-direction: column; padding: 15px 20px; gap: 15px; }
+      nav a { margin: 0 10px; }
+      section { padding: 40px 20px; }
+      details { margin: 20px 20px; }
+      .products { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
     }
   </style>
 </head>
@@ -227,14 +270,14 @@
   <details>
     <summary>About Us</summary>
     <p>
-      Luminous Wear started with a simple idea — to blend technology, fashion, and well-being into something people can truly feel good wearing. <br><br>
-      Our jackets use LED light therapy up to 10,000 lux, mimicking natural sunlight to help improve mood, focus, and energy levels — especially during darker seasons. Each piece is powered by Arduino-based tech and designed with comfort, sustainability, and individuality in mind. <br><br>
-      But we’re more than just a clothing brand — we’re part of a movement to make mental health care visible and accepted. Every jacket is a reminder that taking care of yourself isn’t weakness — it’s strength.
+     Luminous Wear started with a simple idea — to blend technology, fashion, and well-being into something people can truly feel good wearing. <br><br>
+     Our jackets use LED light therapy up to 10,000 lux, mimicking natural sunlight to help improve mood, focus, and energy levels — especially during darker seasons. Each piece is powered by Arduino-based tech and designed with comfort, sustainability, and individuality in mind. <br><br>
+     But we’re more than just a clothing brand — we’re part of a movement to make mental health care visible and accepted. Every jacket is a reminder that taking care of yourself isn’t weakness — it’s strength.
     </p>
   </details>
 
   <section>
-    <h2>/Products <img src="2025.png" alt="2025" class="myImage" style="float:right; height: 30px;"/></h2>
+    <h2>/Products <img src="2025.png" alt="2025" style="float:right; height: 30px;"/></h2>
   
     <div class="products">
       <div class="product">
@@ -292,5 +335,39 @@
     <p><b>Contact:</b> <a href="mailto:luminouswearcompany@gmail.com">luminouswearcompany@gmail.com</a></p>
   </footer>
 
-</body>
+  <script>
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section, .product, details').forEach(el => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.transition = "all 0.8s ease-out";
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.product').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.12) 0%, #0a0a0a 70%)`;
+        card.style.border = "1px solid rgba(255,255,255,0.3)";
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.background = "#0a0a0a";
+        card.style.border = "1px solid transparent";
+      });
+    });
+  </script>
+
+</body> 
 </html>
