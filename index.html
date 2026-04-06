@@ -10,6 +10,8 @@
   <style>
     :root {
       --bg-opacity: 0.9;
+      /*better scrolling and stuff */
+      scroll-behavior: smooth;
     }
 
     body {
@@ -38,6 +40,12 @@
       margin: 0;
     }
 
+    /* cherry pixel logo thing title */
+    header h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     nav a {
       color: white;
       margin-left: 20px;
@@ -50,7 +58,6 @@
       color: #b4b4ff;
     }
 
-  
     .hero {
       position: relative;
       text-align: center;
@@ -63,7 +70,6 @@
       align-items: center;
     }
 
-    
     .hero::before {
       content: "";
       position: absolute;
@@ -74,21 +80,8 @@
       background: url("background.jpg") center/cover no-repeat;
       opacity: var(--bg-opacity);
       z-index: 1;
-      /* cool zoom in effect at beggining */
       animation: zoomPulse 10s infinite alternate ease-in-out; 
     }
-
-/*    
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-      z-index: 2;
-    } */
 
     .hero h1, .hero p {
       position: relative;
@@ -176,9 +169,9 @@
     }
 
     .request-section h3 {
-      font-family: "Pixelify Sans", sans-serif;
-      font-size: clamp(28px, 6vw, 37px);
-      line-height: 1.6;
+      font-family: "Pixelify Sans", sans-serif; /*ts for let us brighten ur day*/
+      font-size: clamp(40px, 8vw, 65px);
+      line-height: 1.2;
     }
 
     .request-section button {
@@ -203,6 +196,7 @@
       justify-content: center;
       align-items: center;
       gap: 30px;
+      font-size: 24px;
       margin: 60px 0;
       font-family: monospace;
       flex-wrap: wrap;
@@ -236,11 +230,28 @@
       border-top: 1px solid #222;
     }
 
+    .social-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .social-links img {
+      width: 30px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    .social-links img:hover {
+      transform: scale(1.2);
+    }
+
     a { color: #b4b4ff; }
 
     ::selection { background: #fff; color: #000; }
 
-    /* MOBILE FIXES */
     @media (max-width: 768px) {
       header { flex-direction: column; padding: 15px 20px; gap: 15px; }
       nav a { margin: 0 10px; }
@@ -253,13 +264,11 @@
 <body>
 
   <header>
-    <h1>🍒 Cherrypixels</h1>
+    <h1><a href="#">🍒 Cherrypixels</a></h1>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Projects</a>
-      <a href="#">What's New</a>
-      <a href="#">About Us</a>
-    </nav>
+      <!--<a href="#">Home</a>-->
+      <a href="#products">Products</a>
+      </nav>
   </header>
 
   <section class="hero">
@@ -267,7 +276,7 @@
     <p>Wearable Light Therapy</p>
   </section>
 
-  <details>
+  <details id="about">
     <summary>About Us</summary>
     <p>
      Luminous Wear started with a simple idea — to blend technology, fashion, and well-being into something people can truly feel good wearing. <br><br>
@@ -276,7 +285,7 @@
     </p>
   </details>
 
-  <section>
+  <section id="products">
     <h2>/Products <img src="2025.png" alt="2025" style="float:right; height: 30px;"/></h2>
   
     <div class="products">
@@ -305,14 +314,13 @@
 
   <section class="request-section">
     <div class="brighten-day">
-      <img src="Jacket.gif" alt="Jacket 360" width="120">
       <h3>LET US BRIGHTEN<br>YOUR DAY!</h3>
       <button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfv1itw8PuGhB4Q-rGkTpWrr2XvvWEo29SAUSViiHU4xuiifQ/viewform'">REQUEST: Custom</button>
     </div>
   </section>
 
   <div class="made-with">
-    <img src="Barcode.png" alt="Barcode" width="120">
+    <img src="barcode.webp" alt="Barcode" width="120">
     <p>MADE WITH</p>
     <img src="arduino.png" alt="Arduino" width="80">
     <p>AND</p>
@@ -333,6 +341,11 @@
 
   <footer>
     <p><b>Contact:</b> <a href="mailto:luminouswearcompany@gmail.com">luminouswearcompany@gmail.com</a></p>
+    <div class="social-links">
+      <a href="https://instagram.com/luminouswear.co" target="_blank"><img src="instagram.webp" alt="Instagram"></a>
+      <a href="https://tiktok.com/@luminouswear.co" target="_blank"><img src="tiktok.webp" alt="Tiktok"></a>
+      <a href="https://www.youtube.com/@LuminousWearOficial" target="_blank"><img src="youtube.webp" alt="YouTube"></a>
+    </div>
   </footer>
 
   <script>
